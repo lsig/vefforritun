@@ -3,11 +3,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <title>Piano</title>
 </head>
 
 <body>
+  <div id="oops" display="none">
+    <img src="./public/oops.jpg" alt="Big picture of the word oops">
+
+    <p>the website requires at least 600px screen width</p>
+  </div>
+
   <div id="background">
     <div class="header">
       <div class="hleft">
@@ -23,11 +31,11 @@
           <option value="song3">
             Seven Nation Army
           </option>
-        </select> <button id="play">Play</button>
+        </select> <button class="hbuttons" id="play">Play</button>
       </div>
 
       <div class="hright">
-        Record:<button id="record">Record</button><button id="stop">Stop</button>
+        Record:<button class="hbuttons" id="record">Record</button><button class="hbuttons" id="stop">Stop</button>
       </div>
     </div>
 
@@ -39,6 +47,13 @@
 
       <div class="text">
         (a)
+      </div></button> <button class="black">
+      <div class="wtext">
+        C
+      </div>
+
+      <div class="wtext">
+        (w)
       </div></button> <button class="white">
       <div class="text">
         D4
@@ -46,6 +61,13 @@
 
       <div class="text">
         (s)
+      </div></button> <button class="black">
+      <div class="wtext">
+        D#4
+      </div>
+
+      <div class="wtext">
+        (e)
       </div></button> <button class="white">
       <div class="text">
         E4
@@ -60,6 +82,13 @@
 
       <div class="text">
         (f)
+      </div></button> <button class="black">
+      <div class="wtext">
+        F#4
+      </div>
+
+      <div class="wtext">
+        (t)
       </div></button> <button class="white">
       <div class="text">
         G4
@@ -67,62 +96,6 @@
 
       <div class="text">
         (g)
-      </div></button> <button class="white">
-      <div class="text">
-        A4
-      </div>
-
-      <div class="text">
-        (h)
-      </div></button> <button class="white">
-      <div class="text">
-        B4
-      </div>
-
-      <div class="text">
-        (j)
-      </div></button> <button class="white">
-      <div class="text">
-        C5
-      </div>
-
-      <div class="text">
-        (k)
-      </div></button> <button class="white">
-      <div class="text">
-        D5
-      </div>
-
-      <div class="text">
-        (l)
-      </div></button> <button class="white">
-      <div class="text">
-        E5
-      </div>
-
-      <div class="text">
-        ;
-      </div></button> <button class="black">
-      <div class="wtext">
-        C
-      </div>
-
-      <div class="wtext">
-        (w)
-      </div></button> <button class="black">
-      <div class="wtext">
-        D#4
-      </div>
-
-      <div class="wtext">
-        (e)
-      </div></button><button class="black">
-      <div class="wtext">
-        F#4
-      </div>
-
-      <div class="wtext">
-        (t)
       </div></button> <button class="black">
       <div class="wtext">
         G#4
@@ -130,6 +103,13 @@
 
       <div class="wtext">
         (y)
+      </div></button> <button class="white">
+      <div class="text">
+        A4
+      </div>
+
+      <div class="text">
+        (h)
       </div></button> <button class="black">
       <div class="wtext">
         Bb4
@@ -137,6 +117,20 @@
 
       <div class="wtext">
         (u)
+      </div></button> <button class="white">
+      <div class="text">
+        B4
+      </div>
+
+      <div class="text">
+        (j)
+      </div></button><button class="white">
+      <div class="text">
+        C5
+      </div>
+
+      <div class="text">
+        (k)
       </div></button> <button class="black">
       <div class="wtext">
         C#5
@@ -144,6 +138,13 @@
 
       <div class="wtext">
         (o)
+      </div></button> <button class="white">
+      <div class="text">
+        D5
+      </div>
+
+      <div class="text">
+        (l)
       </div></button> <button class="black">
       <div class="wtext">
         D#5
@@ -151,6 +152,13 @@
 
       <div class="wtext">
         (p)
+      </div></button> <button class="white">
+      <div class="text">
+        E5
+      </div>
+
+      <div class="text">
+        (;)
       </div></button>
     </div>
   </div>
