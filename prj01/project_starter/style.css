@@ -1,26 +1,74 @@
 #background {
-  background-color: teal;
+  background-color: #301c82;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 }
 
 .header {
   display: flex;
   flex-direction: row;
+  flex-wrap: no-wrap;
   width: 80%;
   justify-content: space-between;
   margin-top: 20px;
-  padding: 2% 0%;
-  background-color: purple;
+  padding: 1% 0%;
+  background-color: #008000;
 }
 
 .hleft {
+  display: flex;
+  flex-direction: row;
   margin-left: 2%;
 }
 
 .hright {
+  display: flex;
+  flex-direction: row;
   margin-right: 2%;
+}
+
+.htext {
+  flex: display;
+  align-self: center;
+}
+
+img {
+  display: flex;
+  align-self: center;
+}
+
+/* #play, */
+/* #record, */
+/* #stop, */
+/* #songs { */
+/*   display: flex; */
+/*   flex-direction: row; */
+/*   align-self: center; */
+/*   margin: 2%; */
+/* } */
+
+#songs {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 2%;
+}
+
+#play,
+#record,
+#stop {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-self: flex-start;
+  margin: 2%;
+  border-radius: 3px;
+}
+
+#stop {
+  background-color: #6fa867;
 }
 
 .piano {
@@ -33,7 +81,7 @@
 
 .white {
   background-color: white;
-  padding: 8% 1%;
+  padding: 12% 1%;
   height: 15%;
   width: 8%;
   flex: 1 0 auto;
@@ -42,12 +90,48 @@
 .black {
   background-color: black;
   color: white;
-  padding: 4% 0%;
-  height: 9%;
-  width: 4%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  /* padding: 5% 0%; */
+  height: 50%;
+  width: 5%;
   z-index: 1;
-  position: relative;
-  transform: translateX(-18px);
+  position: absolute;
+}
+
+#b1 {
+  left: 7.5%;
+}
+
+#b2 {
+  left: 17.5%;
+}
+
+#b3 {
+  left: 37.5%;
+}
+
+#b4 {
+  left: 47.5%;
+}
+
+#b5 {
+  left: 57.5%;
+}
+
+#b6 {
+  left: 77.5%;
+}
+
+#b7 {
+  left: 87.5%;
+}
+
+.wtext {
+  align-self: center;
 }
 
 button[class="white"]:active {

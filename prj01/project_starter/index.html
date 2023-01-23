@@ -11,7 +11,7 @@
 
 <body>
   <div id="oops" display="none">
-    <img src="./public/oops.jpg" alt="Big picture of the word oops">
+    <img src="./oops.jpg" alt="Big picture of the word oops">
 
     <p>the website requires at least 600px screen width</p>
   </div>
@@ -19,7 +19,9 @@
   <div id="background">
     <div class="header">
       <div class="hleft">
-        Tune:<select name="songs" id="songs">
+        <div class="htext">
+          Tune:
+        </div><select name="songs" id="songs">
           <option value="song1">
             F&#252;r Elise
           </option>
@@ -31,11 +33,13 @@
           <option value="song3">
             Seven Nation Army
           </option>
-        </select> <button class="hbuttons" id="play">Play</button>
+        </select> <button class="hbuttons" id="play"><img src="./play.png" alt="play button" height="20px" width="20px"></button>
       </div>
 
       <div class="hright">
-        Record:<button class="hbuttons" id="record">Record</button><button class="hbuttons" id="stop">Stop</button>
+        <div class="htext">
+          Record:
+        </div><button class="hbuttons" id="record"><img src="./record.png" alt="record button" height="20px" width="20px"></button> <button class="hbuttons" id="stop"><img src="./stop.png" alt="record button" height="20px" width="20px"></button>
       </div>
     </div>
 
