@@ -8,22 +8,46 @@
 .header {
   display: flex;
   flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 2% 0%;
+  background-color: purple;
+}
+
+.hleft {
+  margin-left: 2%;
+}
+
+.hright {
+  margin-right: 2%;
 }
 
 .piano {
+  position: relative;
   display: flex;
   flex-direction: row;
+  width: 80%;
+  padding: 2% 0%;
 }
 
 .white {
   background-color: white;
-  padding: 3% 1%;
+  padding: 8% 1%;
+  height: 15%;
+  width: 8%;
+  flex: 1 0 auto;
 }
 
 .black {
   background-color: black;
   color: white;
-  padding: 1.5% 0.25%;
+  padding: 4% 0%;
+  height: 9%;
+  width: 4%;
+  z-index: 1;
+  position: relative;
+  transform: translateX(-18px);
 }
 
 button[class="white"]:active {
