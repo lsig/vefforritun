@@ -57,9 +57,9 @@ img {
   border-radius: 3px;
 }
 
-#stop {
-  background-color: #6fa867;
-}
+/* #stop { */
+/*   background-color: #6fa867; */
+/* } */
 
 .piano {
   position: relative;
@@ -76,8 +76,7 @@ img {
 }
 
 .black {
-  background-color: black;
-  color: white;
+  position: absolute;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
@@ -86,7 +85,8 @@ img {
   height: 50%;
   width: 5%;
   z-index: 1;
-  position: absolute;
+  background-color: black;
+  color: white;
 }
 
 #b1 {
@@ -121,8 +121,15 @@ img {
   align-self: center;
 }
 
-button[class="white"]:active {
-  background-color: grey;
+button[id="stop"]:enabled {
+  background-color: #6fa867;
+}
+
+button:active {
+  background-color: #808080;
+}
+button[id="stop"]:active {
+  background-color: #808080;
 }
 
 #oops {
@@ -130,6 +137,7 @@ button[class="white"]:active {
   flex-direction: column;
   align-items: center;
 }
+
 @media screen and (max-width: 599px) {
   #background {
     display: none;
@@ -137,5 +145,22 @@ button[class="white"]:active {
 
   #oops {
     display: flex;
+  }
+}
+
+@media print {
+  body {
+    filter: grayscale(100%);
+  }
+
+  #background {
+    background-color: #ffffff;
+  }
+
+  .header {
+    background-color: #ffffff;
+  }
+  #stop {
+    background-color: #efefef;
   }
 }
