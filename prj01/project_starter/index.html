@@ -1,68 +1,167 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
-  <title>Piano</title>
-</head>
+    <title>Piano</title>
+  </head>
 
-<body>
-  <div id="oops">
-    . <img src="./public/oops.jpg" alt="Big picture of the word oops">
+  <body>
+    <div id="oops">
+      <img src="./public/oops.jpg" alt="Big picture of the word oops" />
 
-    <p>the website requires at least 600px screen width</p>
-  </div>
-
-  <div id="background">
-    <div class="header">
-      <div class="hleft">
-        <div class="htext">
-          Tune:
-        </div><select name="songs" id="songs">
-          <option value="song1">
-            F&#252;r Elise
-          </option>
-
-          <option value="song2">
-            The Godfather
-          </option>
-
-          <option value="song3">
-            Seven Nation Army
-          </option>
-        </select> <button class="hbuttons" id="play"><img src="./public/play.png" alt="play button" height="20" width="20"></button>
-      </div>
-
-      <div class="hright">
-        <div class="htext">
-          Record:
-        </div><button class="hbuttons" id="record"><img src="./public/record.png" alt="record button" height="20" width="20"></button> <button class="hbuttons" id="stop"><img src="./public/stop.png" alt="record button" height="20" width="20"></button>
-      </div>
+      <p>the website requires at least 600px screen width</p>
     </div>
 
-    <div class="piano">
-      <button class="white"><span class="text">C4<br>
-      (a)</span></button> <button id="b1" class="black"><span class="wtext">C<br>
-      (w)</span></button> <button class="white"><span class="text">D4<br>
-      (s)</span></button> <button id="b2" class="black"><span class="wtext">D#4<br>
-      (e)</span></button> <button class="white"><span class="text">E4<br>
-      (d)</span></button> <button class="white"><span class="text">F4<br>
-      (f)</span></button> <button id="b3" class="black"><span class="wtext">F#4<br>
-      (t)</span></button> <button class="white"><span class="text">G4<br>
-      (g)</span></button> <button id="b4" class="black"><span class="wtext">G#4<br>
-      (y)</span></button> <button class="white"><span class="text">A4<br>
-      (h)</span></button> <button id="b5" class="black"><span class="wtext">Bb4<br>
-      (u)</span></button> <button class="white"><span class="text">B4<br>
-      (j)</span></button> <button class="white"><span class="text">C5<br>
-      (k)</span></button> <button id="b6" class="black"><span class="wtext">C#5<br>
-      (o)</span></button> <button class="white"><span class="text">D5<br>
-      (l)</span></button> <button id="b7" class="black"><span class="wtext">D#5<br>
-      (p)</span></button> <button class="white"><span class="text">E5<br>
-      (;)</span></button>
+    <div id="background">
+      <div class="header">
+        <div class="hleft">
+          <div class="htext">Tune:</div>
+          <select name="songs" id="songs">
+            <option value="song1">F&#252;r Elise</option>
+
+            <option value="song2">The Godfather</option>
+
+            <option value="song3">Seven Nation Army</option>
+          </select>
+          <button class="hbuttons" id="play">
+            <img
+              src="./public/play.png"
+              alt="play button"
+              height="20"
+              width="20"
+            />
+          </button>
+        </div>
+
+        <div class="hright">
+          <div class="htext">Record:</div>
+          <button class="hbuttons" id="record">
+            <img
+              src="./public/record.png"
+              alt="record button"
+              height="20"
+              width="20"
+            />
+          </button>
+          <button class="hbuttons" id="stop">
+            <img
+              src="./public/stop.png"
+              alt="record button"
+              height="20"
+              width="20"
+            />
+          </button>
+        </div>
+      </div>
+
+      <div class="piano">
+        <button class="white">
+          <span class="text"
+            >C4<br />
+            (a)</span
+          >
+        </button>
+        <button id="b1" class="black">
+          <span class="wtext"
+            >C<br />
+            (w)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >D4<br />
+            (s)</span
+          >
+        </button>
+        <button id="b2" class="black">
+          <span class="wtext"
+            >D#4<br />
+            (e)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >E4<br />
+            (d)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >F4<br />
+            (f)</span
+          >
+        </button>
+        <button id="b3" class="black">
+          <span class="wtext"
+            >F#4<br />
+            (t)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >G4<br />
+            (g)</span
+          >
+        </button>
+        <button id="b4" class="black">
+          <span class="wtext"
+            >G#4<br />
+            (y)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >A4<br />
+            (h)</span
+          >
+        </button>
+        <button id="b5" class="black">
+          <span class="wtext"
+            >Bb4<br />
+            (u)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >B4<br />
+            (j)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >C5<br />
+            (k)</span
+          >
+        </button>
+        <button id="b6" class="black">
+          <span class="wtext"
+            >C#5<br />
+            (o)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >D5<br />
+            (l)</span
+          >
+        </button>
+        <button id="b7" class="black">
+          <span class="wtext"
+            >D#5<br />
+            (p)</span
+          >
+        </button>
+        <button class="white">
+          <span class="text"
+            >E5<br />
+            (;)</span
+          >
+        </button>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
