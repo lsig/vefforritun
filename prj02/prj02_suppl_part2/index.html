@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Piano Application</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <div class="keyboard">
+            <div id="controlDiv">
+                <div class="controlSubDiv">
+                    <label for="tunesDrop">Tune:</label>
+                    <select name="tunes" id="tunesDrop">
+                        <option value="elise">Für Elise</option>
+                        <option value="smoke">The Godfather</option>
+                        <option value="seven">Seven Nation Army</option>
+                    </select>
+                    <button id="tunebtn">
+                        <img class="controlimg" src="./public/play.png" alt="Play the selected tune">
+                    </button>
+                </div>
+                <div class="controlSubDiv">
+                    <label for="recordbtn">Record:</label>
+                    <button id="recordbtn">
+                        <img class="controlimg" src="./public/record.png" alt="Record a new tune">
+                    </button>
+                    <button id="stopbtn" disabled>
+                        <img class="controlimg" src="./public/stop.png" alt="Stop recording of tune">
+                    </button>
+                </div>
+            </div>
+            <div id="keyboardDiv">
+                <button id="c4" class="whitebtn">
+                    <span>C4</span>
+                    <span>(a)</span>
+                </button>
+                <button id="c#4" class="blackbtn">
+                    <span>C</span>
+                    <span>(w)</span>
+                </button>
+                <button id="d4" class="whitebtn">
+                    <span>D4</span>
+                    <span>(s)</span>
+                </button>
+                <button id="d#4" class="blackbtn">
+                    <span>D#4</span>
+                    <span>(e)</span>
+                </button>
+                <button id="e4" class="whitebtn">
+                    <span>E4</span>
+                    <span>(d)</span>
+                </button>
+                <button id="f4" class="whitebtn">
+                    <span>F4</span>
+                    <span>(f)</span>
+                </button>
+                <button id="f#4" class="blackbtn">
+                    <span>F#4</span>
+                    <span>(t)</span>
+                </button>
+                <button id="g4" class="whitebtn">
+                    <span>G4</span>
+                    <span>(g)</span>
+                </button>
+                <button id="g#4" class="blackbtn">
+                    <span>G#4</span>
+                    <span>(y)</span>
+                </button>
+                <button id="a4" class="whitebtn">
+                    <span>A4</span>
+                    <span>(h)</span>
+                </button>
+                <button id="bb4" class="blackbtn">
+                    <span>Bb4</span>
+                    <span>(u)</span>
+                </button>
+                <button id="b4" class="whitebtn">
+                    <span>B4</span>
+                    <span>(j)</span>
+                </button>
+                <button id="c5" class="whitebtn">
+                    <span>C5</span>
+                    <span>(k)</span>
+                </button>
+                <button id="c#5" class="blackbtn">
+                    <span>C#5</span>
+                    <span>(o)</span>
+                </button>
+                <button id="d5" class="whitebtn">
+                    <span>D5</span>
+                    <span>(l)</span>
+                </button>
+                <button id="d#5" class="blackbtn">
+                    <span>D#5</span>
+                    <span>(p)</span>
+                </button>
+                <button id="e5" class="whitebtn">
+                    <span>E5</span>
+                    <span>(;)</span>
+                </button>
+            </div>
+        </div>
+        <div id="tooSmallWarning">
+            <img id="oopsimg" src="./public/oops.jpg" alt="An image saying oops">
+            <p>This website requires at least 600px screen width.</p>
+        </div>
+    </body>
+
+</html>
