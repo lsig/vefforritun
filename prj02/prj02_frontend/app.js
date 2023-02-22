@@ -1,3 +1,26 @@
+// record songs and add to backend
+let startTime = 0;
+let elapsedTime = 0;
+let tuneArr = [];
+let unamedTunes = 0;
+
+let isRecording = false;
+
+const recordButton = document.getElementById("recordbtn");
+const stopButton = document.getElementById("stopbtn");
+
+const postTunes = async (load) => {
+  const url = "http://localhost:3000/api/v1/tunes";
+  try {
+    const response = await axios.post(url, load);
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 // add to dropdown and get data
 
 const getAllTunes = async () => {
@@ -14,6 +37,41 @@ const getAllTunes = async () => {
     return null;
   }
   // This code is always executed, independent of whether the request succeeds or fails.
+};
+
+recordButton.addEventListener("click", () => {
+  const now = Tone.now();
+  startTime = now;
+  recordButton.disabled = true;
+  stopButton.disabled = false;
+  isRecording = true;
+});
+
+stopButton.addEventListener("click", () => {
+  unamedTunes += 1;
+  const name = prompt("Please enter song name", `No-name tune ${unamedTunes}`);
+  if (name) {
+    const load = {
+      name: name,
+      tune: tuneArr,
+    };
+    console.log(load);
+    const response = postTunes(load);
+    console.log(response);
+    if (response) {
+      appendNewSong(name);
+    }
+  }
+  recordButton.disabled = false;
+  stopButton.disabled = true;
+  isRecording = false;
+  tuneArr = [];
+});
+
+const checkElapsedTime = () => {
+  const now = Tone.now();
+  elapsedTime = now - startTime;
+  return elapsedTime;
 };
 
 const appendNewSong = (songName) => {
@@ -43,6 +101,15 @@ const playKey = (key) => {
   const now = Tone.now();
 
   synth.triggerAttackRelease(key, "8n", now);
+  if (isRecording) {
+    const keyInfo = {
+      note: key.toUpperCase(),
+      duration: "8n",
+      timing: checkElapsedTime(),
+    };
+    tuneArr.push(keyInfo);
+    console.log(tuneArr);
+  }
 };
 
 const keyboard = document.getElementById("keyboardDiv");
@@ -89,5 +156,3 @@ playButton.addEventListener("click", async () => {
   );
   playTune(song);
 });
-
-// record songs and add to backend
