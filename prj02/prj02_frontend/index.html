@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://unpkg.com/tone"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="app.js" defer></script>
   </head>
 
@@ -14,11 +15,7 @@
       <div id="controlDiv">
         <div class="controlSubDiv">
           <label for="tunesDrop">Tune:</label>
-          <select name="tunes" id="tunesDrop">
-            <option value="elise">Für Elise</option>
-            <option value="smoke">The Godfather</option>
-            <option value="seven">Seven Nation Army</option>
-          </select>
+          <select name="tunes" id="tunesDrop"></select>
           <button id="tunebtn">
             <img
               class="controlimg"
@@ -46,71 +43,71 @@
         </div>
       </div>
       <div id="keyboardDiv">
-        <button id="c4" class="whitebtn">
+        <button id="c4" class="whitebtn" data-key="a">
           <span>C4</span>
           <span>(a)</span>
         </button>
-        <button id="c#4" class="blackbtn">
+        <button id="c#4" class="blackbtn" data-key="w">
           <span>C</span>
           <span>(w)</span>
         </button>
-        <button id="d4" class="whitebtn">
+        <button id="d4" class="whitebtn" data-key="s">
           <span>D4</span>
           <span>(s)</span>
         </button>
-        <button id="d#4" class="blackbtn">
+        <button id="d#4" class="blackbtn" data-key="e">
           <span>D#4</span>
           <span>(e)</span>
         </button>
-        <button id="e4" class="whitebtn">
+        <button id="e4" class="whitebtn" data-key="d">
           <span>E4</span>
           <span>(d)</span>
         </button>
-        <button id="f4" class="whitebtn">
+        <button id="f4" class="whitebtn" data-key="f">
           <span>F4</span>
           <span>(f)</span>
         </button>
-        <button id="f#4" class="blackbtn">
+        <button id="f#4" class="blackbtn" data-key="t">
           <span>F#4</span>
           <span>(t)</span>
         </button>
-        <button id="g4" class="whitebtn">
+        <button id="g4" class="whitebtn" data-key="g">
           <span>G4</span>
           <span>(g)</span>
         </button>
-        <button id="g#4" class="blackbtn">
+        <button id="g#4" class="blackbtn" data-key="y">
           <span>G#4</span>
           <span>(y)</span>
         </button>
-        <button id="a4" class="whitebtn">
+        <button id="a4" class="whitebtn" data-key="h">
           <span>A4</span>
           <span>(h)</span>
         </button>
-        <button id="bb4" class="blackbtn">
+        <button id="bb4" class="blackbtn" data-key="u">
           <span>Bb4</span>
           <span>(u)</span>
         </button>
-        <button id="b4" class="whitebtn">
+        <button id="b4" class="whitebtn" data-key="j">
           <span>B4</span>
           <span>(j)</span>
         </button>
-        <button id="c5" class="whitebtn">
+        <button id="c5" class="whitebtn" data-key="k">
           <span>C5</span>
           <span>(k)</span>
         </button>
-        <button id="c#5" class="blackbtn">
+        <button id="c#5" class="blackbtn" data-key="o">
           <span>C#5</span>
           <span>(o)</span>
         </button>
-        <button id="d5" class="whitebtn">
+        <button id="d5" class="whitebtn" data-key="l">
           <span>D5</span>
           <span>(l)</span>
         </button>
-        <button id="d#5" class="blackbtn">
+        <button id="d#5" class="blackbtn" data-key="p">
           <span>D#5</span>
           <span>(p)</span>
         </button>
-        <button id="e5" class="whitebtn">
+        <button id="e5" class="whitebtn" data-key=";">
           <span>E5</span>
           <span>(;)</span>
         </button>
