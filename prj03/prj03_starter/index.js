@@ -8,8 +8,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
+const apiPath = "/api/";
+const version = "v1";
 
 const port = 3000;
+
+let nextTuneId = 2;
+let nextGenreId = 2;
 
 //Tell express to use the body parser module
 app.use(bodyParser.json());
@@ -66,7 +71,219 @@ const genres = [
   { id: "1", genreName: "Classic" },
 ];
 
+const removeContent = (tuneArr) => {
+  return tuneArr.map(({ content, ...rest }) => rest);
+};
+
+const checkContent = (contentArr) => {
+  let isValid = true;
+  contentArr.forEach((noteObj) => {
+    let { note, duration, timing } = noteObj;
+    if (!note || !duration) {
+      isValid = false;
+    }
+    if (
+      typeof note !== "string" ||
+      typeof duration !== "string" ||
+      typeof timing !== "number"
+    ) {
+      isValid = false;
+    }
+  });
+  return isValid;
+};
+
+const checkGenreId = (id) => {
+  const isValid = genres.find((genre) => genre.id === id);
+  if (isValid) {
+    return true;
+  }
+  return false;
+};
+
+const checkDuplicateGenre = (genreName) => {
+  const isDuplicate = genres.find(
+    (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
+  );
+  if (isDuplicate) {
+    return true;
+  }
+  return false;
+};
+
 //Your endpoints go here
+
+// get/tunes
+app.get(apiPath + version + "/tunes", (req, res) => {
+  const tunesWithoutContent = removeContent(tunes);
+  res.status(200).json(tunesWithoutContent);
+});
+
+// get/tunes/{id}
+app.get(apiPath + version + "/tunes/:id", (req, res) => {
+  const { id } = req.params;
+  const tune = tunes.find((tune) => tune.id === id);
+  if (!tune) {
+    return res.status(404).send("Tune not found");
+  }
+  res.status(200).json(tune);
+});
+// get/tunes/genre/genreName
+app.get(apiPath + version + "/tunes/genre/:genreName", (req, res) => {
+  const { genreName } = req.params;
+  const genre = genres.find(
+    (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
+  );
+  if (!genre) {
+    return res.status(404).json([]);
+  }
+  const genreId = genre.id;
+  const genreTunes = tunes.filter((tune) => tune.genreId === genreId);
+  const genreTunesWithoutContent = removeContent(genreTunes);
+  res.status(200).json(genreTunesWithoutContent);
+});
+
+// post/tunes
+app.post(apiPath + version + "/tunes/:genreId", (req, res) => {
+  try {
+    const { name, content } = req.body;
+    const { genreId } = req.params;
+    if (!name || !content || !genreId) {
+      return res
+        .status(400)
+        .json({ message: "A tune must have a name and content" });
+    }
+    if (content.length === 0) {
+      return res.status(400).json({
+        message: "A tune must have content that isn't an empty array",
+      });
+    }
+    if (!checkContent(content)) {
+      return res.status(405).json({
+        message:
+          "A tune must have valid content, with note, duration and timing",
+      });
+    }
+    if (!checkGenreId(genreId)) {
+      return res.status(404).json({
+        message: "GenreId not found",
+      });
+    }
+    const newTune = {
+      id: nextTuneId,
+      name: name,
+      genreId: genreId,
+      content: content,
+    };
+
+    tunes.push(newTune);
+    nextTuneId++;
+    return res.status(201).json(newTune);
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ message: "Internal server error: Oops!" });
+  }
+});
+
+// patch/tunes
+app.patch(apiPath + version + "/tunes/:name/:genreId", (req, res) => {
+  try {
+    const { oldName, oldGenreId } = req.params;
+    const { newName, newGenreId, content } = req.body;
+
+    if (!oldName && !newName && !content && !oldGenreId && !newGenreId) {
+      return res.status(400).json({ message: "No field changed" });
+    }
+
+    const tuneIndex = tunes.findIndex((tune) =>
+      tune.name.toLowerCase().includes(oldName.toLowerCase())
+    );
+    if (tuneIndex < 0) {
+      return res
+        .status(404)
+        .json({ message: "tune not found, unable to PATCH" });
+    }
+
+    const updatedTune = { ...tunes[tuneIndex] };
+    if (newName) {
+      updatedTune.name = newName;
+    }
+    if (newGenreId && oldGenreId) {
+      updatedTune.genreId = newGenreId;
+    }
+    if (content && content !== []) {
+      updatedTune.content = content;
+    }
+
+    tunes[tuneIndex] = updatedTune;
+    return res.status(200).json(tunes[tuneIndex]);
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ message: "Internal server error: Oops!" });
+  }
+});
+
+// get/genres
+app.get(apiPath + version + "/genres", (req, res) => {
+  res.status(200).json(genres);
+});
+// get/genres/{id}
+app.get(apiPath + version + "/genres/:id", (req, res) => {
+  const { id } = req.params;
+  const genre = genres.find((genre) => genre.id === id);
+  if (!genre) {
+    return res.status(404).send("Genre not found");
+  }
+  res.status(200).json(genre);
+});
+// post/genres
+app.post(apiPath + version + "/genres", (req, res) => {
+  const { genreName } = req.body;
+  const isDup = checkDuplicateGenre(genreName);
+  if (isDup) {
+    return res
+      .status(404)
+      .json({ message: "Genre name not allowed, already exists" });
+  }
+  const newGenre = {
+    id: nextGenreId,
+    genreName: genreName,
+  };
+  genres.push(newGenre);
+  nextGenreId++;
+  return res.status(201).json(newGenre);
+});
+
+// delete/genres
+app.delete(apiPath + version + "/genres", (req, res) => {
+  const { genreName } = req.body;
+  const genre = genres.find(
+    (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
+  );
+  if (!genre) {
+    return res.status(404).json({ message: "Genre doesn't exist" });
+  }
+  const genreId = genre.id;
+  const genreTunes = tunes.find((tune) => tune.genreId === genreId);
+  if (genreTunes) {
+    return res.status(400).json({ message: "Can't delete genre, in use" });
+  }
+  const genreIndex = genres.findIndex(
+    (genre) => genre.genreName.toLowerCase() === genreName
+  );
+  const deletedGenre = genres.splice(genreIndex, 1);
+  res.status(200).json(deletedGenre);
+});
+
+// ping
+app.get("/", (req, res) => {
+  res.status(200).send("pong");
+});
+
+//default: not supported
+app.use("*", (req, res) => {
+  res.status(405).send("Operation not supported.");
+});
 
 //Start the server
 app.listen(port, () => {

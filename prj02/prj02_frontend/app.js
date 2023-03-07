@@ -30,6 +30,7 @@ const getAllTunes = async () => {
   //Perform a GET request to the url
   try {
     const response = await axios.get(url);
+    console.log(response);
     return response.data;
   } catch (error) {
     //When unsuccessful, print the error.
