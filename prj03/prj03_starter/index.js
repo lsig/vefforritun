@@ -128,8 +128,8 @@ app.get(apiPath + version + "/tunes/:id", (req, res) => {
   }
   res.status(200).json(tune);
 });
-// get/tunes/genre/genreName
-app.get(apiPath + version + "/tunes/genre/:genreName", (req, res) => {
+// get tunes by genre
+app.get(apiPath + version + "/genre/filter/:genreName/tunes", (req, res) => {
   const { genreName } = req.params;
   const genre = genres.find(
     (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
@@ -144,7 +144,7 @@ app.get(apiPath + version + "/tunes/genre/:genreName", (req, res) => {
 });
 
 // post/tunes
-app.post(apiPath + version + "/tunes/:genreId", (req, res) => {
+app.post(apiPath + version + "/genre/:genreId/tunes", (req, res) => {
   try {
     const { name, content } = req.body;
     const { genreId } = req.params;
@@ -186,30 +186,34 @@ app.post(apiPath + version + "/tunes/:genreId", (req, res) => {
 });
 
 // patch/tunes
-app.patch(apiPath + version + "/tunes/:name/:genreId", (req, res) => {
+app.patch(apiPath + version + "/genre/:oldGenreId/tunes/:id", (req, res) => {
   try {
-    const { oldName, oldGenreId } = req.params;
-    const { newName, newGenreId, content } = req.body;
+    const { oldGenreId, id } = req.params;
+    const { name, genreId, content } = req.body;
 
-    if (!oldName && !newName && !content && !oldGenreId && !newGenreId) {
+    if (!id && !name && !content && !oldGenreId && !genreId) {
       return res.status(400).json({ message: "No field changed" });
     }
 
-    const tuneIndex = tunes.findIndex((tune) =>
-      tune.name.toLowerCase().includes(oldName.toLowerCase())
-    );
+    const tuneIndex = tunes.findIndex((tune) => tune.id == id);
     if (tuneIndex < 0) {
       return res
         .status(404)
         .json({ message: "tune not found, unable to PATCH" });
     }
 
-    const updatedTune = { ...tunes[tuneIndex] };
-    if (newName) {
-      updatedTune.name = newName;
+    if (oldGenreId !== tunes[tuneIndex].genreId) {
+      return res
+        .status(404)
+        .json({ message: "Wrong genreId for tune, unable to PATCH" });
     }
-    if (newGenreId && oldGenreId) {
-      updatedTune.genreId = newGenreId;
+
+    const updatedTune = { ...tunes[tuneIndex] };
+    if (name) {
+      updatedTune.name = name;
+    }
+    if (genreId && oldGenreId) {
+      updatedTune.genreId = genreId;
     }
     if (content && content !== []) {
       updatedTune.content = content;
