@@ -289,7 +289,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"genreName\": \"Jazz\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -297,7 +297,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/v1/genres",
+							"raw": "localhost:3000/api/v1/genres/2",
 							"host": [
 								"localhost"
 							],
@@ -305,7 +305,8 @@
 							"path": [
 								"api",
 								"v1",
-								"genres"
+								"genres",
+								"2"
 							]
 						}
 					},
