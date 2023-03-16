@@ -252,7 +252,7 @@ app.post(apiPath + version + "/genres", (req, res) => {
       .json({ message: "Genre name not allowed, already exists" });
   }
   const newGenre = {
-    id: nextGenreId,
+    id: nextGenreId.toString(),
     genreName: genreName,
   };
   genres.push(newGenre);
@@ -261,32 +261,27 @@ app.post(apiPath + version + "/genres", (req, res) => {
 });
 
 // delete/genres
-app.delete(apiPath + version + "/genres", (req, res) => {
-  const { genreName } = req.body;
-  if (!genreName) {
+app.delete(apiPath + version + "/genres/:genreId", (req, res) => {
+  const { genreId } = req.params;
+  if (!genreId) {
     return res
       .status(400)
-      .json({ message: "genreName not provided in the request body" });
+      .json({ message: "genreId not provided as a parameter" });
   }
-  const genre = genres.find(
-    (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
-  );
+  const genre = genres.find((genre) => genreId === genre.id);
   if (!genre) {
     return res.status(404).json({ message: "Genre doesn't exist" });
   }
-  const genreId = genre.id;
   const genreTunes = tunes.find((tune) => tune.genreId === genreId);
   if (genreTunes) {
     return res.status(400).json({ message: "Can't delete genre, in use" });
   }
-  const genreIndex = genres.findIndex(
-    (genre) => genre.genreName.toLowerCase() === genreName
-  );
+  const genreIndex = genres.findIndex((genre) => genreId === genre.id);
   const deletedGenre = genres.splice(genreIndex, 1);
   res.status(200).json(deletedGenre);
 });
 
-// ping
+// ping pong
 app.get("/", (req, res) => {
   res.status(200).send("pong");
 });
