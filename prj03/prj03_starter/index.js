@@ -116,6 +116,19 @@ const checkDuplicateGenre = (genreName) => {
 // get/tunes
 app.get(apiPath + version + "/tunes", (req, res) => {
   const tunesWithoutContent = removeContent(tunes);
+  const { filter } = req.query;
+  if (filter) {
+    const genre = genres.find(
+      (genre) => genre.genreName.toLowerCase() === filter.toLowerCase()
+    );
+    if (!genre) {
+      return res.status(404).json([]);
+    }
+    const genreTunes = tunesWithoutContent.filter(
+      (tune) => tune.genreId === genre.id
+    );
+    return res.status(200).json(genreTunes);
+  }
   res.status(200).json(tunesWithoutContent);
 });
 
@@ -127,20 +140,6 @@ app.get(apiPath + version + "/tunes/:id", (req, res) => {
     return res.status(404).send("Tune not found");
   }
   res.status(200).json(tune);
-});
-// get tunes by genre
-app.get(apiPath + version + "/genre/filter/:genreName/tunes", (req, res) => {
-  const { genreName } = req.params;
-  const genre = genres.find(
-    (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
-  );
-  if (!genre) {
-    return res.status(404).json([]);
-  }
-  const genreId = genre.id;
-  const genreTunes = tunes.filter((tune) => tune.genreId === genreId);
-  const genreTunesWithoutContent = removeContent(genreTunes);
-  res.status(200).json(genreTunesWithoutContent);
 });
 
 // post/tunes
