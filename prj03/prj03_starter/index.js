@@ -240,6 +240,11 @@ app.get(apiPath + version + "/genres/:id", (req, res) => {
 // post/genres
 app.post(apiPath + version + "/genres", (req, res) => {
   const { genreName } = req.body;
+  if (!genreName) {
+    return res
+      .status(400)
+      .json({ message: "genreName not provided in the request body" });
+  }
   const isDup = checkDuplicateGenre(genreName);
   if (isDup) {
     return res
@@ -258,6 +263,11 @@ app.post(apiPath + version + "/genres", (req, res) => {
 // delete/genres
 app.delete(apiPath + version + "/genres", (req, res) => {
   const { genreName } = req.body;
+  if (!genreName) {
+    return res
+      .status(400)
+      .json({ message: "genreName not provided in the request body" });
+  }
   const genre = genres.find(
     (genre) => genre.genreName.toLowerCase() === genreName.toLowerCase()
   );
