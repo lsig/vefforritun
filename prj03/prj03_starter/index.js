@@ -111,8 +111,6 @@ const checkDuplicateGenre = (genreName) => {
   return false;
 };
 
-//Your endpoints go here
-
 // get/tunes
 app.get(apiPath + version + "/tunes", (req, res) => {
   const tunesWithoutContent = removeContent(tunes);
@@ -150,7 +148,7 @@ app.post(apiPath + version + "/genre/:genreId/tunes", (req, res) => {
     if (!name || !content || !genreId) {
       return res
         .status(400)
-        .json({ message: "A tune must have a name and content" });
+        .json({ message: "A tune must have a name, content and genreId" });
     }
     if (content.length === 0) {
       return res.status(400).json({
@@ -198,7 +196,7 @@ app.patch(apiPath + version + "/genre/:oldGenreId/tunes/:id", (req, res) => {
     if (tuneIndex < 0) {
       return res
         .status(404)
-        .json({ message: "tune not found, unable to PATCH" });
+        .json({ message: "Tune not found, unable to PATCH" });
     }
 
     if (oldGenreId !== tunes[tuneIndex].genreId) {
