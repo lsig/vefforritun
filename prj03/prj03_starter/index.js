@@ -167,7 +167,7 @@ app.post(apiPath + version + "/genre/:genreId/tunes", (req, res) => {
       });
     }
     const newTune = {
-      id: nextTuneId,
+      id: nextTuneId.toString(),
       name: name,
       genreId: genreId,
       content: content,
