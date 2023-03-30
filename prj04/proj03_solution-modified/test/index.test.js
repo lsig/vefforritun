@@ -97,6 +97,55 @@ describe("Endpoint tests", () => {
       "Tune with id 3 does not have genre id 2."
     );
   });
+
+  test("PATCH individual tunes fails since properties are wrong", async () => {
+    const updatedTune = {
+      message: "Ave Maria",
+      id: "1",
+      arr: [1, 2, 3],
+    };
+
+    const res = await request(apiUrl)
+      .patch("/api/v1/genres/0/tunes/3")
+      .send(updatedTune);
+
+    expect(res.status).toBe(400);
+    expect(res.body).toBeDefined();
+    expect(res.body.message).toEqual(
+      "To update a tune, you need to provide a name, a non-empty content array, or a new genreId."
+    );
+  });
+
+  test("POST fails because content property array is empty", async () => {
+    const newTune = {
+      name: "Ave Maria",
+      content: [],
+    };
+    const res = await request(apiUrl)
+      .post("/api/v1/genres/1/tunes")
+      .send(newTune);
+
+    expect(res.status).toBe(400);
+    expect(res.body).toBeDefined();
+    expect(res.body.message).toEqual(
+      "Tunes require at least a name, and a non-empty content array."
+    );
+  });
+
+  test("POST fails because content property is not provided", async () => {
+    const newTune = {
+      name: "Ave Maria",
+    };
+    const res = await request(apiUrl)
+      .post("/api/v1/genres/1/tunes")
+      .send(newTune);
+
+    expect(res.status).toBe(400);
+    expect(res.body).toBeDefined();
+    expect(res.body.message).toEqual(
+      "Tunes require at least a name, and a non-empty content array."
+    );
+  });
   // Do something weird
   test("GET /randomURL causes 405", async () => {
     const res = await request(apiUrl).get("/api/v1/randomUrl");
