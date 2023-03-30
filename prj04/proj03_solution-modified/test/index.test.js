@@ -116,7 +116,7 @@ describe("Endpoint tests", () => {
     );
   });
 
-  test("POST fails because content property array is empty", async () => {
+  test("POST new tune fails because content property array is empty", async () => {
     const newTune = {
       name: "Ave Maria",
       content: [],
@@ -132,7 +132,7 @@ describe("Endpoint tests", () => {
     );
   });
 
-  test("POST fails because content property is not provided", async () => {
+  test("POST new tune fails because content property is not provided", async () => {
     const newTune = {
       name: "Ave Maria",
     };
@@ -146,6 +146,18 @@ describe("Endpoint tests", () => {
       "Tunes require at least a name, and a non-empty content array."
     );
   });
+
+  test("POST new genre fails because unautherized", async () => {
+    const newGenre = {
+      name: "R&B",
+    };
+    const res = await request(apiUrl).post("/api/v1/genres").send(newGenre);
+
+    expect(res.status).toBe(401);
+    expect(res.body).toBeDefined();
+    expect(res.body.message).toEqual("Unauthorized");
+  });
+
   // Do something weird
   test("GET /randomURL causes 405", async () => {
     const res = await request(apiUrl).get("/api/v1/randomUrl");
