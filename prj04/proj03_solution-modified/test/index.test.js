@@ -147,7 +147,7 @@ describe("Endpoint tests", () => {
     );
   });
 
-  test("POST new genre fails because unautherized", async () => {
+  test("POST new genre fails because unauthorized", async () => {
     const newGenre = {
       name: "R&B",
     };
@@ -156,6 +156,20 @@ describe("Endpoint tests", () => {
     expect(res.status).toBe(401);
     expect(res.body).toBeDefined();
     expect(res.body.message).toEqual("Unauthorized");
+  });
+
+  test("Replay attack works when auth has been stolen", async () => {
+    const auth =
+      "HMAC f1a71952d1c9d661edf9fe8825ee711b6dc07408903de1e763a58baa0eda82fc";
+    const newGenre = {
+      genreName: "R&B",
+    };
+
+    const res = await request(apiUrl)
+      .post("/api/v1/genres")
+      .set("Authorization", auth)
+      .send(newGenre);
+    expect(res.status).toBe(201);
   });
 
   // Do something weird
