@@ -22,6 +22,17 @@ describe("Endpoint tests", () => {
     expect(res.body.length).toEqual(2);
   });
 
+  test("GET individual tune", async () => {
+    const res = await request(apiUrl).get("/api/v1/genres/0/tunes/3");
+    const { id, name, genreId, content } = res.body;
+    expect(res.status).toBe(200);
+    expect(res.body).toBeDefined();
+    expect(id).toEqual("3");
+    expect(name).toEqual("Seven Nation Army");
+    expect(genreId).toEqual("0");
+    expect(content).toBeInstanceOf(Array);
+  });
+
   // Do something weird
   test("GET /randomURL causes 405", async () => {
     const res = await request(apiUrl).get("/api/v1/randomUrl");
