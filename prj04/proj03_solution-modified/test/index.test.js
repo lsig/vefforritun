@@ -158,7 +158,7 @@ describe("Endpoint tests", () => {
     expect(res.body.message).toEqual("Unauthorized");
   });
 
-  test("Replay attack works when auth has been stolen", async () => {
+  test("Replay attack works when auth has been intercepted", async () => {
     const auth =
       "HMAC f1a71952d1c9d661edf9fe8825ee711b6dc07408903de1e763a58baa0eda82fc";
     const newGenre = {
