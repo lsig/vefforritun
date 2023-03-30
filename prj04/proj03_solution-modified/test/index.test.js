@@ -14,7 +14,7 @@ describe("Endpoint tests", () => {
   //###########################
   //Write your tests below here
   //###########################
-  test("GET /tunes", async () => {
+  test("GET /tunes gets an array of tunes", async () => {
     const res = await request(apiUrl).get("/api/v1/tunes");
     expect(res.status).toBe(200);
     expect(res.body).toBeDefined();
@@ -22,7 +22,7 @@ describe("Endpoint tests", () => {
     expect(res.body.length).toEqual(2);
   });
 
-  test("GET individual tune", async () => {
+  test("GET individual tune works", async () => {
     const res = await request(apiUrl).get("/api/v1/genres/0/tunes/3");
     const { id, name, genreId, content } = res.body;
     expect(res.status).toBe(200);
@@ -40,7 +40,7 @@ describe("Endpoint tests", () => {
     expect(res.body.message).toBe("Tune with id 10 does not exist.");
   });
 
-  test("PATCH individual tunes", async () => {
+  test("PATCH individual tunes works", async () => {
     const updatedTune = {
       name: "Ave Maria",
       genreId: "1",
