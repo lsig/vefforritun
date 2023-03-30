@@ -14,6 +14,13 @@ describe("Endpoint tests", () => {
   //###########################
   //Write your tests below here
   //###########################
+  test("GET /tunes", async () => {
+    const res = await request(apiUrl).get("/api/v1/tunes");
+    expect(res.status).toBe(200);
+    expect(res.body).toBeDefined();
+    expect(res.body).toBeInstanceOf(Array);
+    expect(res.body.length).toEqual(2);
+  });
 
   // Do something weird
   test("GET /randomURL causes 405", async () => {
