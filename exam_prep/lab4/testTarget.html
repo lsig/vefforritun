@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Testing JavaScript</title>
+        <meta charset="UTF-8">
+        <link href="https://unpkg.com/mocha@10.2.0/mocha.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div style="margin-top: 100px; margin-left: auto; margin-right:auto; width: 80%;">
+            <div>
+                <h4>Part 1: Pythagorean theorem: Enter two sides of a right triangle!</h4>
+                a: <input type="text" id="varA">
+                b: <input type="text" id="varB">
+                <button type="button" onclick="calculateC()">Calculate C</button>
+                <p>c:</p>
+                <div id="displayC" style="width: 70%; border: 1px solid black;"></div>
+            </div>
+            <div>
+                <h4>Part 2: AJAX: Enter a URL to be loaded!</h4>
+                URL: <input type="text" id="fname">
+                <button type="button" onclick="checkAndGetURL()">Load Resource</button>
+                <h5>Requested resource:</h5>
+                <div id="displayDiv" style="width: 70%; border: 1px solid black;"></div>
+            </div>
+
+            <div id="mocha" style="border: 2px solid black;"></div>
+
+            <script src="https://unpkg.com/chai@4.3.7/chai.js"></script>
+            <script src="https://unpkg.com/mocha@10.2.0/mocha.js"></script>
+
+            <script>mocha.setup('bdd')</script>
+            <script src="app.js"></script>
+            <script src="tests/app.test.js"></script>
+
+            <script>
+                mocha.run();
+            </script>
+
+    </body>
+
+</html>

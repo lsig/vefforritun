@@ -1,0 +1,14 @@
+{
+  "name": "mathproject",
+  "version": "1.0.0",
+  "description": "A sample project to do some math.",
+  "main": "math.js",
+  "scripts": {
+    "test": "jest ./test/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}

@@ -1,0 +1,69 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  padding: 1.8rem 4rem;
+  margin: 0rem 5rem;
+  background-color: #dddddd;
+  border: 0.15rem dashed black;
+  border-radius: 1.5rem;
+}
+
+ul {
+  background-color: #dddddd;
+  list-style-type: lower-greek;
+  padding: 1.2rem 2rem;
+  margin-right: 73.5%;
+  border-left: 0.1rem solid #2d9baa;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 1rem 25rem;
+  box-shadow: 10px 10px #aaaaaa;
+}
+
+table:hover {
+  opacity: 0.5;
+}
+
+thead {
+  display: flex;
+  background-color: #16a5b3;
+  color: #ffffff;
+  border-bottom: 0.2rem solid #ada9a9;
+}
+
+thead tr {
+  display: flex;
+  gap: 25px;
+  padding: 0.1rem 0.25rem;
+}
+
+tbody tr {
+  display: flex;
+  padding: 0.1rem 0.4rem;
+  border-bottom: 0.1rem solid #ada9a9;
+}
+
+tbody tr td:nth-child(1) {
+  display: flex;
+  width: 12%;
+  justify-content: flex-start;
+  margin: 0.1rem 0.1rem;
+}
+
+tbody tr td:nth-child(2) {
+  display: flex;
+  padding: 0.1rem 0.1rem;
+}
+
+.blocklink:hover {
+  background-color: #aaaaaa;
+  color: #ffffff;
+}
+
+.item {
+  font-weight: bold;
+}

@@ -1,0 +1,32 @@
+#map {
+  height: 380px;
+  width: 45%;
+  display: inline-block;
+  margin: 10px;
+}
+
+#details {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 400px;
+  margin-left: 10%;
+  vertical-align: top;
+}
+
+#eatList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.eatery {
+  background-color: grey;
+  padding: 1rem;
+  margin: 1rem 1.85rem;
+  min-width: 9rem;
+  min-height: 4rem;
+  width: 16%;
+  border: 0.25rem dashed orange;
+  border-spacing: 8px;
+}

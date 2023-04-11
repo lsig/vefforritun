@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <form name="Personal information">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="First name" /><br />
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="Last name" /><br />
+      <label for="SSN">Social Security Number:</label>
+      <input type="text" id="SSN" name="SSN" /><br />
+      <label>Gender:</label> <br />
+      <label><input type="radio" name="gender" value="Male" />Male</label>
+      <br />
+      <label><input type="radio" name="gender" value="Female" />Female</label>
+      <br />
+      <label><input type="radio" name="gender" value="Other" />Other</label>
+      <br />
+      <label for="uni">University:</label>
+      <input type="text" id="uni" name="university" value="RU" /><br />
+      <label>
+        Department:
+        <select name="dep">
+          <option value="CS">Computer Science</option>
+          <option value="Eng">Engineering</option>
+          <option value="Bus">Business</option>
+        </select>
+      </label>
+      <br />
+      <label for="course">Course:</label>
+      <input type="text" id="course" name="course" value="T-213-VEFF" /><br />
+      <label
+        ><input type="checkbox" name="lectures" value="L1" />L1:
+        Introduction</label
+      >
+      <br />
+      <label
+        ><input type="checkbox" name="lectures" value="L2" />L2: Networks</label
+      >
+      <br />
+      <label
+        ><input type="checkbox" name="lectures" value="L3" />L3: HTML 1</label
+      >
+      <br />
+      <textarea
+        name="message"
+        rows="5"
+        cols="40"
+        placeholder="My impressions of this course is..."
+      ></textarea>
+      <br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 95%;
+  background-color: #301c82;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 78%;
+  background-color: #008000;
+  padding: 1% 2%;
+  margin: 2% 0%;
+}
+
+.piano {
+  display: flex;
+  position: relative;
+  align-self: center;
+  width: 82%;
+  margin: 1rem 0rem;
+}
+
+.white-button {
+  height: 16rem;
+  width: 10%;
+  text-align: center;
+}
+
+.black-button {
+  position: absolute;
+  background-color: black;
+  color: white;
+  height: 8.5rem;
+  width: 5%;
+  text-align: center;
+  z-index: 1;
+}
+
+#d5-b {
+  left: 87.5%;
+}
+
+#c5-b {
+  left: 77.5%;
+}
+
+#bb4 {
+  left: 57.5%;
+}
+
+#g4-b {
+  left: 47.5%;
+}
+
+#f4-b {
+  left: 37.5%;
+}
+
+#d4-b {
+  left: 17.5%;
+}
+
+#c {
+  left: 7.5%;
+}
+
+#play,
+#rec,
+#stop {
+  padding: 0.3rem;
+  padding-top: 0.35rem;
+}
+
+/* #rec[disabled] { */
+/*   pointer-events: none; */
+/*   opacity: 0.5; */
+/* } */
+
+button:active {
+  background-color: grey;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+#oops {
+  display: none;
+}
+
+@media only screen and (max-width: 850px) {
+  .black-button {
+    font-size: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .background {
+    display: none;
+  }
+
+  #oops {
+    display: flex;
+    justify-content: center;
+  }
+}

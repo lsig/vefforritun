@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piano</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id="oops">
+      <img src="public/oops.jpg" alt="error occured, screen to small" />
+    </div>
+    <div class="background">
+      <div class="header">
+        <div class="left-header">
+          <label for="song-dropdown">Tune:</label>
+          <select id="song-dropdown">
+            <option value="option1">F&uuml;r Elise</option>
+            <option value="option2">The Godfather</option>
+            <option value="option3">Seven nation army</option>
+          </select>
+          <button id="play">
+            <img
+              src="public/play.png"
+              alt="play button"
+              height="15"
+              width="15"
+            />
+          </button>
+        </div>
+        <div class="right-header">
+          <button id="rec">
+            <img
+              src="public/record.png"
+              alt="record button"
+              height="15"
+              width="15"
+            />
+          </button>
+          <button id="stop" disabled>
+            <img
+              src="public/stop.png"
+              alt="stop button"
+              height="15"
+              width="15"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="piano">
+        <button class="white-button" id="c4">
+          C4
+          <br />
+          (a)
+        </button>
+        <button class="black-button" id="c">
+          C
+          <br />
+          (w)
+        </button>
+        <button class="white-button" id="d4">
+          D4
+          <br />
+          (s)
+        </button>
+        <button class="black-button" id="d4-b">
+          D#4
+          <br />
+          (e)
+        </button>
+        <button class="white-button" id="e4">
+          E4
+          <br />
+          (d)
+        </button>
+        <button class="white-button" id="f4">
+          F4
+          <br />
+          (f)
+        </button>
+        <button class="black-button" id="f4-b">
+          F#4
+          <br />
+          (t)
+        </button>
+        <button class="white-button" id="g4">
+          G4
+          <br />
+          (g)
+        </button>
+        <button class="black-button" id="g4-b">
+          G#4
+          <br />
+          (y)
+        </button>
+        <button class="white-button" id="a4">
+          A4
+          <br />
+          (h)
+        </button>
+        <button class="black-button" id="bb4">
+          Bb4
+          <br />
+          (u)
+        </button>
+        <button class="white-button" id="b4">
+          B4
+          <br />
+          (j)
+        </button>
+        <button class="white-button" id="c5">
+          C5
+          <br />
+          (k)
+        </button>
+        <button class="black-button" id="c5-b">
+          C#5
+          <br />
+          (o)
+        </button>
+        <button class="white-button" id="d5">
+          D5
+          <br />
+          (l)
+        </button>
+        <button class="black-button" id="d5-b">
+          D#5
+          <br />
+          (p)
+        </button>
+        <button class="white-button" id="e5">
+          E5
+          <br />
+          (;)
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

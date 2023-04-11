@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lab3 - JavaScript</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="container">
+      <div class="jumbotron border border-info">
+        <h1>Lab Assignment 3 - JavaScript</h1>
+      </div>
+    </header>
+    <main class="container">
+      <div class="alert alert-info border border-info">
+        This assignment requires you to write JavaScript code fulfilling a
+        number of common functions. It consists of 2 parts. It is not allowed to
+        modify this HTML file. Put all your code into app.js.
+      </div>
+
+      <div
+        id="mathCheck"
+        class="jumbotron bg-info-light text-dark border border-info text-justify"
+      >
+        <h2>Part I - CAPTCHA</h2>
+        <p>
+          Randomly generate two numbers between 1 and 10 (including both) and
+          one of the three mathematical operators plus (+), minus (-) and
+          multiply (*). The user is asked to calculate the result of the
+          mathematical operation (number 1 operator number 2), where number 1 is
+          the larger of the two generated numbers. This is done by displaying
+          "Calculate " followed by the operation in the label with id
+          <mark>taskMsg</mark>. When the user enters the result into the text
+          field with id <mark>mathIn</mark> and presses the check button below,
+          check whether the result is correct and display "correct" or
+          "incorrect" (depending on the outcome) in the div with id
+          <mark>resultMsg</mark>. In the correct case, the class of the div
+          shall be changed to "alert alert-success" and the display style to
+          block. In the incorrect case, the class of the div shall be changed to
+          "alert alert-danger" and the display style to block. Approx. 5 seconds
+          after the result has been displayed, a new operation shall be
+          calculated and displayed (as described above), the
+          <mark>resultMsg</mark> div shall disappear again, and the input field
+          emptied.
+        </p>
+        <form action="" class="form-inline mb-5 mt-5">
+          <div class="form-group">
+            <label id="taskMsg" for="mathIn">asdasd</label>
+            <input type="number" class="form-control ml-5 mr-5" id="mathIn" />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="evaluateResult()"
+          >
+            Check
+          </button>
+        </form>
+
+        <div
+          id="resultMsg"
+          class="alert alert-success"
+          style="display: none"
+        ></div>
+      </div>
+
+      <div
+        id="forLoopDiv"
+        class="jumbotron bg-info-light text-dark border border-info text-justify"
+      >
+        <h2>Part II - Asynchronicity</h2>
+        <p>
+          Whenever the button below is pressed, the following shall happen: The
+          numbers from 1 (including) to the number entered in field with id
+          <mark>loopNumber</mark> (including) shall be printed into the div with
+          id <mark>loopOutput</mark>. A new line (br tag) shall separate each
+          number, but no new line shall be inserted before 1 or after the final
+          number. Each output shall have a timeout of 10 milliseconds (Note:
+          This will not cause any noticeable delay in the behaviour, which is
+          fine!). Whenever the button is pressed again, the output div is
+          emptied first. Do not use ES6 (or higher) constructs. You can assume
+          that the entered number is a valid integer.
+        </p>
+        <form action="" class="form-inline mb-5 mt-5">
+          <div class="form-group">
+            <label for="loopNumber">Please enter a number: </label>
+            <input
+              type="number"
+              class="form-control ml-5 mr-5"
+              id="loopNumber"
+            />
+          </div>
+          <button type="button" class="btn btn-primary" onclick="printLoop()">
+            Print my numbers!
+          </button>
+        </form>
+
+        <div id="loopOutput" class="alert alert-info"></div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
