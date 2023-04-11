@@ -29,7 +29,7 @@ const playKey = (key, note, dur = "8n", timing = 0) => {
     key.classList.add("active");
     setTimeout(() => {
       key.classList.remove("active");
-    }, 100 + timing * 1000);
+    }, 100);
   }
   const now = Tone.now();
   synth.triggerAttackRelease(note, dur, now + timing);
@@ -96,6 +96,7 @@ const stopButton = document.getElementById("stopbtn");
 const recButton = document.getElementById("recordbtn");
 
 playButton.addEventListener("click", () => playSong());
+
 stopButton.addEventListener("click", async () => {
   isRecording = false;
   recButton.disabled = false;
