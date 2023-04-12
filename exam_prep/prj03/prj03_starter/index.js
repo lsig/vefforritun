@@ -116,6 +116,9 @@ app.get(apiPath + version + "/tunes", (req, res) => {
 app.get(apiPath + version + "/tunes/:id", (req, res) => {
   const { id } = req.params;
   const tune = tunes.find((t) => t.id === id);
+  if (!tune) {
+    return res.status(404).send({ message: "Tune not found" });
+  }
   return res.status(200).json(tune);
 });
 
